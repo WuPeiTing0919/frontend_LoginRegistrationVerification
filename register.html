@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TripEasy 旅遊電商 | 會員註冊</title>
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="wrap">
+        <div class="header">
+            <div class="container header_container">
+                <div class="navbar_left">
+                    <h1><a href="#"><img src="img/logo.png" alt="TripEasy"></a></h1>
+        
+                    <form action="index.html">
+                        <input class="search_txtbox" type="text" name="search" placeholder="今天要去哪裡呢？" required>
+                        <input class="search_btn" type="submit" value="">
+                    </form>
+        
+                    <div class="lang_toggle">
+                        <div class="lang_option active" data-lang="zh">中</div>
+                        <div class="lang_option" data-lang="en">英</div>
+                    </div>
+                </div>
+
+                <div class="navbar_right">
+                    <ul class="nav_link">
+                        <li><a href="#">購物專區</a></li>
+                        <li><a href="#">旅遊神器</a></li>
+                        <li><a href="#">行事曆</a></li>
+                        <li><a href="#">購物車</a></li>
+                    </ul>
+
+                    <a href="#" class="login_btn">註冊/登入</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="content">
+            <div class="container content_container">
+                <div class="vertical-wrapper">
+                    <p  class="vertical-text">走吧!</p>
+                    <p  class="vertical-text">讓每段旅程都有溫度</p>
+                </div>
+
+                <div>
+                    <img src="img/register.png" alt="register_img">
+                </div>
+
+                <div class="main_form">
+                    <h2>會員註冊</h2>
+                    <form action="index.html">
+                        <div class="form_item">
+                            <i class="fa-regular fa-user"></i>
+                            <input class="register_txtbox" type="text" name="name" placeholder="請輸入姓名" required>
+                        </div>
+                        <div class="form_item">
+                            <i class="fa-regular fa-envelope"></i>
+                            <input class="register_txtbox" type="email" name="email" placeholder="請輸入 Email" required>
+                        </div>
+                        <div class="form_item">
+                            <i class="fa-solid fa-lock"></i>
+                            <input class="register_txtbox" type="password" name="password" placeholder="請輸入密碼" required>
+                            <i class="fa-solid fa-eye-slash"></i>
+                        </div>
+                        
+                        <div class="form_preference">
+                            <div class="select-wrap">
+                                <select class="select-box" name="preference" required>
+                                    <option value="" disabled selected hidden>請選擇</option>
+                                    <option value="探索冒險">探索冒險</option>
+                                    <option value="放鬆療癒">放鬆療癒</option>
+                                    <option value="文化體驗">文化體驗</option>
+                                    <option value="美食探索">美食探索</option>
+                                    <option value="都市感官">都市感官</option>
+                                    <option value="自然療癒">自然療癒</option>
+                                    <option value="親子家庭">親子家庭</option>
+                                    <option value="拍照打卡">拍照打卡</option>
+                                    <option value="懶人輕鬆">懶人輕鬆</option>
+                                    <option value="特殊主題">特殊主題</option>
+                                </select>
+                            </div>
+                            <div class="select-wrap">
+                                <select class="select-box" name="preference" required>
+                                    <option value="" disabled selected hidden>請選擇</option>
+                                    <option value="探索冒險">探索冒險</option>
+                                    <option value="放鬆療癒">放鬆療癒</option>
+                                    <option value="文化體驗">文化體驗</option>
+                                    <option value="美食探索">美食探索</option>
+                                    <option value="都市感官">都市感官</option>
+                                    <option value="自然療癒">自然療癒</option>
+                                    <option value="親子家庭">親子家庭</option>
+                                    <option value="拍照打卡">拍照打卡</option>
+                                    <option value="懶人輕鬆">懶人輕鬆</option>
+                                    <option value="特殊主題">特殊主題</option>
+                                </select>
+                            </div>
+                            <div class="select-wrap">
+                                <select class="select-box" name="preference" required>
+                                    <option value="" disabled selected hidden>請選擇</option>
+                                    <option value="探索冒險">探索冒險</option>
+                                    <option value="放鬆療癒">放鬆療癒</option>
+                                    <option value="文化體驗">文化體驗</option>
+                                    <option value="美食探索">美食探索</option>
+                                    <option value="都市感官">都市感官</option>
+                                    <option value="自然療癒">自然療癒</option>
+                                    <option value="親子家庭">親子家庭</option>
+                                    <option value="拍照打卡">拍照打卡</option>
+                                    <option value="懶人輕鬆">懶人輕鬆</option>
+                                    <option value="特殊主題">特殊主題</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <p class="error_msg"></p>
+                        <input class="submit_btn" type="submit" value="加入會員">
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="container footer_container">
+                <div class="footer_left">
+                    <a href="#"><img src="img/logo.png" alt="TripEasy"></a>
+                    <ul class="contact_item">
+                        <li>公司地址：台北市中山區忠孝東路二段211號</li>
+                        <li>電話：02-1234-5678</li>
+                        <li>公司統編：12345678</li>
+                    </ul>
+                    <p>© Copyright 2025 TripEasy</p>
+                </div>
+
+                <div class="footer_middle">
+                    <ul>
+                        <li><h4>公司資訊</h4></li>
+                        <li><a href="#">關於我們</a></li>
+                    </ul>
+                    <ul>
+                        <li><h4>客戶服務</h4></li>
+                        <li><a href="#">常見問題</a></li>
+                        <li><a href="#">旅遊回饋</a></li>
+                        <li><a href="#">退款政策</a></li>
+                    </ul>
+                    <ul>
+                        <li><h4>合作與業務</h4></li>
+                        <li><a href="#">商務合作洽談</a></li>
+                        <li><a href="#">成為供應商</a></li>
+                    </ul>
+                    <ul>
+                        <li><h4>法律與條款</h4></li>
+                        <li><a href="#">隱私權政策</a></li>
+                        <li><a href="#">使用者條款</a></li>
+                        <li><a href="#">Cookie 政策</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer_right">
+                    <ul class="community_item">
+                        <li><a href="#"><img src="img/Vector.png" alt="facebook"></a></li>
+                        <li><a href="#"><img src="img/logo-instagram.png" alt="instagram"></a></li>
+                        <li><a href="#"><img src="img/logo-X.png" alt="twitter"></a></li>
+                    </ul>
+                    <p>走走停停都是風景 <br>
+                        Even the pauses are beautiful. <br>
+                        Every step, every pause— <br>
+                        it's all part of the view.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.6.7/dist/axios.min.js"></script>
+    <script type="module" src="js/all.js"></script>
+</body>
+</html>
+
