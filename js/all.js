@@ -1,21 +1,45 @@
 import * as func from './function.js';
 import * as api from './api.js';
 
+/* --- 公用按鈕 ( 多國語系、錯誤提醒、密碼隱藏按鈕 ) --- */
 const lang_toggle = document.querySelector('.lang_toggle');
+const error_msg = document.querySelector('.error_msg');
+const showPwd_Eye = document.querySelectorAll('.fa-eye-slash');
+
+/* --- 表單 ( 多國語系、錯誤提醒、密碼隱藏按鈕 ) --- */
+const nameTxt = document.querySelector('.form_item input[name="name"]');
+const emailTxt = document.querySelector('.form_item input[name="email"]');
+const pwdTxt = document.querySelector('.form_item input[type="password"]');
+const newpwdTxt = document.querySelector('.form_item input[name="newpassword"]');
+const newpwdAgainTxt = document.querySelector('.form_item input[name="newpassword_again"]');
+const submitBtn = document.querySelector('.submit_btn');
+
+/* --- 登入獨有的物件 --- */
+const rememberEmail = document.getElementById('login_email');
+const rememberCheckbox = document.getElementById('rememberMe');
+
+/* --- 註冊獨有的物件 --- */
 const selects = document.querySelectorAll('.select-box');
 
-const signUpName = document.querySelector('.form_item input[type="text"]');
-const signUpEmail = document.querySelector('.form_item input[type="email"]');
-const signUpPwd = document.querySelector('.form_item input[type="password"]');
-const signUpPwd_Eye = document.querySelector('.fa-eye-slash');
-const signUpBtn = document.querySelector('.submit_btn');
 
-const error_msg = document.querySelector('.error_msg');
-
+/* --- 公用事件 --- */
 // 多國語系按鈕切換事件
 lang_toggle.addEventListener('click',() =>{
     const options = lang_toggle.querySelectorAll('.lang_option');
     options.forEach(option => option.classList.toggle('active'));
+});
+
+// 顯示密碼、隱藏密碼按鈕事件
+showPwd_Eye.forEach(icon => {
+    icon.addEventListener('click',() => {
+        const inputId = icon.dataset.target;
+        const input = document.getElementById(inputId);
+        const isPassword = input.type === 'password';
+
+        input.type = isPassword ? 'text' : 'password';
+        icon.classList.toggle('fa-eye');
+        icon.classList.toggle('fa-eye-slash');
+    });
 });
 
 // 偏好設定按鈕事件
@@ -25,26 +49,78 @@ selects.forEach(select => {
     });
 });
 
-// 顯示密碼、隱藏密碼按鈕事件
-signUpPwd_Eye.addEventListener('click',() => {
-    func.passwordShow(signUpPwd ,signUpPwd_Eye)
-});
+/* --- 登入獨有事件 ( 記住 Email ) --- */
+if (window.location.pathname.includes('login.html')) {
+     // 初始時檢查 localStorage
+     window.addEventListener('DOMContentLoaded', () => {
+        const savedEmail = localStorage.getItem('savedEmail');
+        const isRemembered = localStorage.getItem('rememberMe') === 'true';
 
-// 註冊按鈕事件
-signUpBtn.addEventListener('click', e=> {
+        if (savedEmail && isRemembered) {
+            rememberEmail.value = savedEmail;
+            rememberCheckbox.checked = true;
+        }
+
+    });
+
+    // 勾選框變更時，儲存或清除 Email
+    rememberCheckbox.addEventListener('change', () => {
+        if (rememberCheckbox.checked) {
+            localStorage.setItem('savedEmail', rememberEmail.value);
+            localStorage.setItem('rememberMe', 'true');
+        } else {
+            localStorage.removeItem('savedEmail');
+            localStorage.setItem('rememberMe', 'false');
+            rememberEmail.value = "";
+        }
+    });
+
+    // Email 欄位變更時也同步更新（避免先勾選後輸入）
+    rememberEmail.addEventListener('input', () => {
+        if (rememberCheckbox.checked) {
+            localStorage.setItem('savedEmail', rememberEmail.value);
+        }
+    });
+}
+   
+
+// 按鈕事件
+submitBtn.addEventListener('click', e=> {
     e.preventDefault();
 
-    if(func.validateName(signUpName,error_msg)) return;
-    if(func.validateEmail(signUpEmail,error_msg)) return;
-    if(func.validatePassword(signUpPwd,error_msg)) return;
-    if(func.checkSelections(selects,error_msg)) return;
+    if (window.location.pathname.includes('login.html')) {
+        // 登入事件
+        if(func.validateEmail(emailTxt,error_msg)) return;
+        if(func.validatePassword(pwdTxt,error_msg)) return;
 
-    const selectedValues = Array.from(selects).map(sel => sel.value);
-    api.signUpAPI(
-        signUpName.value.trim(),
-        signUpEmail.value.trim(),
-        signUpPwd.value.trim(),
-        [1,2,3]  //selectedValues
-    );
+
+    }else if (window.location.pathname.includes('register.html')){
+        // 註冊事件
+        if(func.validateName(nameTxt,error_msg)) return;
+        if(func.validateEmail(emailTxt,error_msg)) return;
+        if(func.validatePassword(pwdTxt,error_msg)) return;
+        if(func.checkSelections(selects,error_msg)) return;
+
+        const selectedValues = Array.from(selects).map(sel => sel.value);
+        /*
+        api.signUpAPI(
+            signUpName.value.trim(),
+            signUpEmail.value.trim(),
+            signUpPwd.value.trim(),
+            [1,2,3]  //selectedValues
+        );
+        */
+
+    }else if (window.location.pathname.includes('forgot-password.html')){
+        // 忘記密碼事件
+        if(func.validateEmail(emailTxt,error_msg)) return;
+
+    }else if (window.location.pathname.includes('reset-password.html')){
+        // 修改密碼事件
+        if(func.validatePassword(newpwdTxt,error_msg)) return;
+        if(func.validatePassword(newpwdAgainTxt,error_msg)) return;
+    }
+
+    
 });
 

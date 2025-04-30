@@ -20,17 +20,6 @@ export function updateOptions(selects) {
     });
 }
 
-// 密碼呈現和隱藏事件函數
-export function passwordShow(pwdBtn,eyeBtn){
-    if (eyeBtn.getAttribute("class") == "fa-solid fa-eye-slash"){
-        eyeBtn.setAttribute("class","fa-solid fa-eye");
-        pwdBtn.setAttribute("type","text");
-    }else{
-        eyeBtn.setAttribute("class","fa-solid fa-eye-slash");
-        pwdBtn.setAttribute("type","password");
-    }
-}
-
 // 驗證姓名事件
 export function validateName(nameTxt,errorTxt) {
     const trimmed = nameTxt.value.trim();

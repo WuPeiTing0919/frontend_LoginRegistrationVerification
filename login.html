@@ -57,16 +57,16 @@
                     <div class="form">
                         <div class="form_item">
                             <i class="fa-regular fa-envelope"></i>
-                            <input class="form_txtbox" type="email" name="email" placeholder="請輸入 Email" required>
+                            <input class="form_txtbox" id="login_email" type="email" name="email" placeholder="請輸入 Email" required>
                         </div>
                         <div class="form_item">
                             <i class="fa-solid fa-lock"></i>
-                            <input class="form_txtbox" type="password" name="password" placeholder="請輸入密碼" required>
-                            <i class="fa-solid fa-eye-slash"></i>
+                            <input class="form_txtbox" id="password" type="password" name="password" placeholder="請輸入密碼" required>
+                            <i class="fa-solid fa-eye-slash" data-target="password"></i>
                         </div>
                         <div class="form_item list_item">
                             <label class="check-box">
-                                <input type="checkbox"/>
+                                <input id="rememberMe" type="checkbox"/>
                                 <span>記住我的 Email</span>
                             </label>
                             <div class="link_item">
