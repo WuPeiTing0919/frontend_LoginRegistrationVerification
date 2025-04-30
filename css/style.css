@@ -177,7 +177,7 @@
     color: #D4D4D4;
 }
 
-/**/
+/* 核取方塊 */
 input[type=checkbox] {
     display: none;
 }
@@ -194,6 +194,8 @@ input[type=checkbox] {
     border-radius: 5px;
     width: 15px;
     height: 15px;
+
+    cursor: pointer;
 }
 
 .check-box span::after{
@@ -204,25 +206,41 @@ input[type=checkbox] {
     position: absolute;
     width: 7px;
     height: 14px;
-    border-right: 2px solid #f39800;
-    border-bottom: 2px solid #f39800;
+    border-right: 2px solid #9DBEB3;
+    border-bottom: 2px solid #9DBEB3;
     transform: rotate(40deg);
+
+    cursor: pointer;
 }
 
+input[type=checkbox]:checked+span::before{
+    display:none; 
+}
+input[type=checkbox]:checked+span::after{
+    display:block; 
+}
 
+.list_item{
+    display: flex;
+    justify-content: space-between;
+}
 
 /* 連結項目 */
 .link_item{
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    gap: 5px;
 
     font-size: 16px;
 }
 
+.link_item a{
+    font-weight: bold;
+}
+
 .link_item a:hover{
     text-decoration: underline;
-    color: #B1D6CA;
+    color: #9DBEB3;
 }
 
 /* 分隔線 */
@@ -267,12 +285,12 @@ input[type=checkbox] {
     align-items: center;
     justify-content: center;
     transition: background-color 0.5 ease, transform 0.2s ease;
-  }
-  
-  .icon-circle:hover {
+}
+
+.icon-circle:hover {
     background-color: #e0e0e0; /* 淺灰色圓背景 */
     cursor: pointer;
-    
+
     transform: translateY(-2px); /* 微微上移一點 */
-  }
+}
   
