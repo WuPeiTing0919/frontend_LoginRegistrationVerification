@@ -260,6 +260,24 @@ a {
     padding: 8px;
 }
 
+.community-circle {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    transition: background-color 0.5s ease, transform 0.5s ease;
+}
+
+.community-circle:hover {
+    background-color: #e4e2e2; /* 淺灰色圓背景 */
+    cursor: pointer;
+
+    transform: translateY(-2px); /* 微微上移一點 */
+}
+
 .footer_right p{
     color: #939393;
     font-size: 12px;

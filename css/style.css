@@ -139,6 +139,7 @@
     background-color: #5B5B5B;
 }
 
+/* ----------------------  註冊  ------------------------- */
 /* 偏好設定 */
 .form_preference{
     display: flex;
@@ -177,6 +178,7 @@
     color: #D4D4D4;
 }
 
+/* ----------------------  登入  ------------------------- */
 /* 核取方塊 */
 .list_item{
     display: flex;
@@ -286,7 +288,8 @@ input[type=checkbox]:checked+span::after{
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: background-color 0.5 ease, transform 0.2s ease;
+
+    transition: background-color 0.5s ease, transform 0.5s ease;
 }
 
 .icon-circle:hover {
