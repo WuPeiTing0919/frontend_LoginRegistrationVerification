@@ -178,13 +178,20 @@
 }
 
 /* 核取方塊 */
+.list_item{
+    display: flex;
+    justify-content: space-between;
+}
+
 input[type=checkbox] {
     display: none;
 }
 
 .check-box span{
     padding-left: 24px;
+    cursor: pointer;
 }
+
 .check-box span::before{
     content:"";
     left: 0;
@@ -218,11 +225,6 @@ input[type=checkbox]:checked+span::before{
 }
 input[type=checkbox]:checked+span::after{
     display:block; 
-}
-
-.list_item{
-    display: flex;
-    justify-content: space-between;
 }
 
 /* 連結項目 */

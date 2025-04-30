@@ -265,3 +265,54 @@ a {
     font-size: 12px;
     line-height: 1.6;
 }
+
+/* 客服按鈕 */
+.chat-widget {
+    position: fixed;
+    bottom: 35px;
+    right: 35px;
+    text-align: center;
+    z-index: 1000;
+  }
+  
+  .chat-widget img {
+    width: 120px; /* 可依圖調整大小 */
+    cursor: pointer;
+  }
+  
+  .speech-bubble {
+    display: inline-block;
+    background-color: #bce0d5;
+    color: #222;
+    padding: 8px 16px;
+    border-radius: 30px;
+    font-size: 18px;
+    font-weight: bold;
+    position: absolute;
+    bottom: 100%; /* 放在圖片正上方 */
+    left: 50%;
+    transform: translateX(-50%);
+    margin-bottom: 10px;
+    white-space: nowrap;
+  }
+
+/* 小箭頭也要調整位置 */
+.speech-bubble::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border-left: 8px solid transparent;
+    border-right: 8px solid transparent;
+    border-top: 10px solid #bce0d5;
+  }
+
+  .car-image {
+    transition: transform 0.3s ease;
+  }
+  
+  .chat-widget:hover .car-image {
+    transform: translate(-5px, -5px) rotate(5deg); /* 往左上翹一點 */
+  }
+  
