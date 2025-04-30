@@ -54,20 +54,39 @@
 
                 <div class="main_form">
                     <h2>會員登入</h2>
-                    <form action="index.html">
+                    <div class="form">
                         <div class="form_item">
                             <i class="fa-regular fa-envelope"></i>
-                            <input class="register_txtbox" type="email" name="email" placeholder="請輸入 Email" required>
+                            <input class="form_txtbox" type="email" name="email" placeholder="請輸入 Email" required>
                         </div>
                         <div class="form_item">
                             <i class="fa-solid fa-lock"></i>
-                            <input class="register_txtbox" type="password" name="password" placeholder="請輸入密碼" required>
+                            <input class="form_txtbox" type="password" name="password" placeholder="請輸入密碼" required>
                             <i class="fa-solid fa-eye-slash"></i>
                         </div>
+                        <div class="form_item">
+                            <label class="check-box">
+                                <input type="checkbox"/>
+                                <span>記住我的 Email</span>
+                            </label>
+                        </div>
+                        <div class="form_item link_item">
+                            <span><a href="register.html">立即註冊</a></span>
+                            <span><a href="forgot-password.html">忘記密碼</a></span>
+                        </div>
                         <p class="error_msg"></p>
-                        
-                        <input class="submit_btn" type="submit" value="加入會員">
-                    </form>
+                        <input class="submit_btn" type="submit" value="登入">
+                    </div>
+                    
+                    <div class="divider">
+                        <span class="divider-text">或</span>
+                    </div>
+
+                    <div class="socialLogin">
+                        <div class="icon-circle"><i class="fa-brands fa-google"></i></div>
+                        <div class="icon-circle"><i class="fa-brands fa-facebook-f"></i></div>
+                    </div>
+                    
                 </div>
             </div>
         </div>
