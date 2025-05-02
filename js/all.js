@@ -21,8 +21,14 @@ const rememberCheckbox = document.getElementById('rememberMe');
 /* --- 註冊獨有的物件 --- */
 const selects = document.querySelectorAll('.select-box');
 
+/* --- 抓取修改密碼 token 物件 --- */
 const urlParams = new URLSearchParams(window.location.search);
 const token = urlParams.get('token');
+
+const googleBtn = document.querySelector('.google');
+const fbBtn = document.querySelector('.fb');
+
+/* ---------------------------------------------------------------------------- */
 
 /* --- 公用事件 --- */
 // 多國語系按鈕切換事件
@@ -84,7 +90,30 @@ if (window.location.pathname.includes('login.html')) {
         }
     });
 }
-   
+
+googleBtn.addEventListener('click',e =>{
+    e.preventDefault();
+
+    const googleClientId = "148755362421-us8l17s3ukf88mj23kbs5vj2i8lgu8nk.apps.googleusercontent.com";
+    const redirectUri = "http://127.0.0.1:5500/login.html";
+
+    const googleLogin = () => {
+    const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${redirectUri}&response_type=code&scope=openid%20email%20profile`;
+        window.location.href = url;
+    };
+
+    googleLogin();
+})
+
+window.addEventListener('DOMContentLoaded', async () => {
+    const params = new URLSearchParams(window.location.search);
+    const code = params.get('code');
+
+    if (code) {
+        api.post_user_LoginGoogle(code);
+        window.history.replaceState({}, document.title, window.location.pathname);
+    }
+});
 
 // 按鈕事件
 submitBtn.addEventListener('click', e=> {

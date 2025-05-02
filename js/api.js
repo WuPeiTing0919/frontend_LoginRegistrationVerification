@@ -51,6 +51,31 @@ export function post_user_LoginEmail(signUpEmail_txt,signUpPwd_txt){
   });
 }
 
+// [POST] 編號 03 : 使用者登入 - Google 登入
+export function post_user_LoginGoogle(code){
+  axios.post(`${apiUrl}/login/google`,{
+      "code": code
+  })
+  .then(res => {
+    Swal.fire({
+        icon: "success",
+        title: res.data.status,
+        text: res.data.message,
+        scrollbarPadding: false
+    });
+
+    console.log(res.data)
+  })
+  .catch(error => {
+    Swal.fire({
+        icon: "error",
+        title: error,
+        text: error,
+        scrollbarPadding: false
+    });
+  });
+}
+
 // [POST] 編號 05 : 使用者忘記密碼
 export function post_user_forgetPW(signUpEmail_txt){
   axios.post(`${apiUrl}/forgetpw`,{
