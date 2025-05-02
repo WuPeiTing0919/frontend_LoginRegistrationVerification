@@ -136,4 +136,3 @@ export function checkSelections(selects,errorTxt){
         return true;
     } 
 }
-  

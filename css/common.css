@@ -10,13 +10,28 @@ body {
     background-image:url("../img/background.png");
 }
 
+html, body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    overflow: auto;
+  
+    scrollbar-width: none;          /* Firefox */
+    -ms-overflow-style: none;       /* IE 10+ */
+  }
+  
+html::-webkit-scrollbar,
+body::-webkit-scrollbar {
+    display: none;                  /* Chrome / Safari / Edge */
+}
+
 a {
     text-decoration: none;
     color: #212121;
 }
 
 .wrap{
-    min-height: 100vh;         /* 撐滿整個視窗 */
+    height: 100vh;         /* 撐滿整個視窗 */
     display: flex;
     flex-direction: column;
 }
@@ -333,4 +348,6 @@ a {
   .chat-widget:hover .car-image {
     transform: translate(-5px, -5px) rotate(5deg); /* 往左上翹一點 */
   }
+  
+
   

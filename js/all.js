@@ -21,6 +21,8 @@ const rememberCheckbox = document.getElementById('rememberMe');
 /* --- 註冊獨有的物件 --- */
 const selects = document.querySelectorAll('.select-box');
 
+const urlParams = new URLSearchParams(window.location.search);
+const token = urlParams.get('token');
 
 /* --- 公用事件 --- */
 // 多國語系按鈕切換事件
@@ -92,7 +94,10 @@ submitBtn.addEventListener('click', e=> {
         // 登入事件
         if(func.validateEmail(emailTxt,error_msg)) return;
         if(func.validatePassword(pwdTxt,error_msg)) return;
-
+        api.post_user_LoginEmail(
+            emailTxt.value.trim(),
+            pwdTxt.value.trim()
+        );
 
     }else if (window.location.pathname.includes('register.html')){
         // 註冊事件
@@ -102,23 +107,30 @@ submitBtn.addEventListener('click', e=> {
         if(func.checkSelections(selects,error_msg)) return;
 
         const selectedValues = Array.from(selects).map(sel => sel.value);
-        /*
-        api.signUpAPI(
-            signUpName.value.trim(),
-            signUpEmail.value.trim(),
-            signUpPwd.value.trim(),
-            [1,2,3]  //selectedValues
+        api.post_user_SignUp(
+            nameTxt.value.trim(),
+            emailTxt.value.trim(),
+            pwdTxt.value.trim(),
+            selectedValues
         );
-        */
 
     }else if (window.location.pathname.includes('forgot-password.html')){
         // 忘記密碼事件
         if(func.validateEmail(emailTxt,error_msg)) return;
+        api.post_user_forgetPW(
+            emailTxt.value.trim()
+        );
 
     }else if (window.location.pathname.includes('reset-password.html')){
         // 修改密碼事件
         if(func.validatePassword(newpwdTxt,error_msg)) return;
         if(func.validatePassword(newpwdAgainTxt,error_msg)) return;
+
+        api.post_user_resetPW(
+            token,
+            newpwdTxt.value.trim(),
+            newpwdAgainTxt.value.trim()
+        );
     }
 
     
