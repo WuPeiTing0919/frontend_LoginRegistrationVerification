@@ -136,3 +136,7 @@ export function checkSelections(selects,errorTxt){
         return true;
     } 
 }
+
+export function refreshCaptcha(captchaImg) {
+    captchaImg.src = 'http://127.0.0.1:3000/api/v1/auth/userinfo/captcha?' + Date.now();
+}

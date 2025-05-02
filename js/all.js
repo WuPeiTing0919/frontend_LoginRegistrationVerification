@@ -17,6 +17,8 @@ const submitBtn = document.querySelector('.submit_btn');
 /* --- 登入獨有的物件 --- */
 const rememberEmail = document.getElementById('login_email');
 const rememberCheckbox = document.getElementById('rememberMe');
+const googleBtn = document.querySelector('.google');
+const fbBtn = document.querySelector('.fb');
 
 /* --- 註冊獨有的物件 --- */
 const selects = document.querySelectorAll('.select-box');
@@ -24,9 +26,8 @@ const selects = document.querySelectorAll('.select-box');
 /* --- 抓取修改密碼 token 物件 --- */
 const urlParams = new URLSearchParams(window.location.search);
 const token = urlParams.get('token');
-
-const googleBtn = document.querySelector('.google');
-const fbBtn = document.querySelector('.fb');
+const captchaImg = document.getElementById('captcha');
+const input = document.getElementById('captchaInput');
 
 /* ---------------------------------------------------------------------------- */
 
@@ -57,7 +58,7 @@ selects.forEach(select => {
     });
 });
 
-/* --- 登入獨有事件 ( 記住 Email ) --- */
+/* --- 登入獨有事件 ( 記住 Email、第三方登入 ) --- */
 if (window.location.pathname.includes('login.html')) {
      // 初始時檢查 localStorage
      window.addEventListener('DOMContentLoaded', () => {
@@ -89,31 +90,39 @@ if (window.location.pathname.includes('login.html')) {
             localStorage.setItem('savedEmail', rememberEmail.value);
         }
     });
+
+    /* google 按鈕事件 */
+    googleBtn.addEventListener('click',e =>{
+        e.preventDefault();
+
+        const googleClientId = "148755362421-us8l17s3ukf88mj23kbs5vj2i8lgu8nk.apps.googleusercontent.com";
+        const redirectUri = "http://127.0.0.1:5500/login.html";
+
+        const googleLogin = () => {
+        const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${redirectUri}&response_type=code&scope=openid%20email%20profile`;
+            window.location.href = url;
+        };
+
+        googleLogin();
+    })
+
+    /* 每當載入頁面，確認 google 登入狀態並串送 API */
+    window.addEventListener('DOMContentLoaded', async () => {
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+
+        if (code) {
+            api.post_user_LoginGoogle(code);
+            window.history.replaceState({}, document.title, window.location.pathname);
+        }
+    });
 }
 
-googleBtn.addEventListener('click',e =>{
-    e.preventDefault();
-
-    const googleClientId = "148755362421-us8l17s3ukf88mj23kbs5vj2i8lgu8nk.apps.googleusercontent.com";
-    const redirectUri = "http://127.0.0.1:5500/login.html";
-
-    const googleLogin = () => {
-    const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${redirectUri}&response_type=code&scope=openid%20email%20profile`;
-        window.location.href = url;
-    };
-
-    googleLogin();
-})
-
-window.addEventListener('DOMContentLoaded', async () => {
-    const params = new URLSearchParams(window.location.search);
-    const code = params.get('code');
-
-    if (code) {
-        api.post_user_LoginGoogle(code);
-        window.history.replaceState({}, document.title, window.location.pathname);
-    }
-});
+if (window.location.pathname.includes('reset-password.html')){
+    captchaImg.addEventListener('click', () => {
+        func.refreshCaptcha(captchaImg);
+    })
+}
 
 // 按鈕事件
 submitBtn.addEventListener('click', e=> {
@@ -155,13 +164,13 @@ submitBtn.addEventListener('click', e=> {
         if(func.validatePassword(newpwdTxt,error_msg)) return;
         if(func.validatePassword(newpwdAgainTxt,error_msg)) return;
 
+        console.log(input.value.trim())
         api.post_user_resetPW(
             token,
             newpwdTxt.value.trim(),
-            newpwdAgainTxt.value.trim()
+            newpwdAgainTxt.value.trim(),
+            input.value.trim()
         );
     }
-
-    
 });
 

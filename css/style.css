@@ -299,3 +299,26 @@ input[type=checkbox]:checked+span::after{
     transform: translateY(-2px); /* 微微上移一點 */
 }
   
+/* ----------------------  修改密碼  ------------------------- */
+.captcha_item{
+    display: flex;
+    gap: 15px;
+}
+
+.captcha_item #captchaInput{
+    width: 170px;
+    border: 2px solid #D4D4D4;
+    padding: 15px 0px 15px 15px;
+    border-radius: 5px;
+    font-size: 16px;
+
+    background-color: #F2F2F2;
+}
+
+.captcha_item #captcha{
+    margin: 0px;
+    border: 2px solid #D4D4D4;
+
+    border-radius: 5px;
+    cursor: pointer;
+}

@@ -100,11 +100,14 @@ export function post_user_forgetPW(signUpEmail_txt){
 }
 
 // [PATCH] 編號 06 : 使用者密碼修改
-export function post_user_resetPW(token,signUpNewPwd_txt,signUpNewaginPwd_txt){
+export function post_user_resetPW(token,signUpNewPwd_txt,signUpNewaginPwd_txt,captchaInput_txt){
   axios.patch(`${apiUrl}/resetpw`,{
       "token":token,
 	    "new_password": signUpNewPwd_txt,
-	    "confirm_password": signUpNewaginPwd_txt
+	    "confirm_password": signUpNewaginPwd_txt,
+      "input" : captchaInput_txt
+  },{
+    withCredentials: true // ← 這就是 credentials: 'include' 的對應
   })
   .then(res => {
     Swal.fire({
