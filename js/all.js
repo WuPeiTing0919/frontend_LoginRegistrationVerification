@@ -112,8 +112,8 @@ if (window.location.pathname.includes('login.html')) {
         const redirectUri = "http://127.0.0.1:5500/login.html";
 
         const googleLogin = () => {
-        const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${redirectUri}&response_type=code&scope=openid%20email%20profile`;
-            window.location.href = url;
+            const url = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${redirectUri}&response_type=code&scope=openid%20email%20profile`;
+                window.location.href = url;
         };
 
         googleLogin();

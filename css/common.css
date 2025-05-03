@@ -48,7 +48,14 @@ a {
 
 /* ----------------------  header  ------------------------- */
 .header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 999;
+    
     background-color: #FFFFFF99;
+    backdrop-filter: blur(10px);          /* 毛玻璃模糊 */
 }
 
 .header_container{
@@ -118,6 +125,7 @@ a {
     border-radius: 100px;
 
     font-size: 12px;
+    background-color: #F2F2F2;
 }
 
 .lang_toggle .lang_option{
@@ -207,7 +215,7 @@ a {
 }
 
 #userPicture{
-    width: 42px;
+    width: 45px;
 }
 
 .user-dropdown .dropdown-menu{
