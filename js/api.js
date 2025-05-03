@@ -1,3 +1,5 @@
+import * as func from './function.js';
+
 const version = 'v1';
 const apiUrl = `http://127.0.0.1:3000/api/${version}/auth/userinfo`;
 
@@ -34,6 +36,10 @@ export function post_user_LoginEmail(signUpEmail_txt,signUpPwd_txt){
       "password": signUpPwd_txt
   })
   .then(res => {
+    localStorage.setItem("authToken", res.data.data.token);
+    document.getElementById('userName').textContent = `嗨！${res.data.data.user.name}`;
+
+    func.checkLoginStatus();
     Swal.fire({
         icon: "success",
         title: res.data.status,
@@ -57,6 +63,10 @@ export function post_user_LoginGoogle(code){
       "code": code
   })
   .then(res => {
+    localStorage.setItem("authToken", res.data.data.token);
+    document.getElementById('userName').textContent = `嗨！${res.data.data.user.name}`;
+
+    func.checkLoginStatus();
     Swal.fire({
         icon: "success",
         title: res.data.status,

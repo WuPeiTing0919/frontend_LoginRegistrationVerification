@@ -5,6 +5,9 @@ import * as api from './api.js';
 const lang_toggle = document.querySelector('.lang_toggle');
 const error_msg = document.querySelector('.error_msg');
 const showPwd_Eye = document.querySelectorAll('.fa-eye-slash');
+const dropdown_toggle = document.querySelector('.user-toggle');
+const logout = document.getElementById('logout');
+
 
 /* --- 表單 ( 多國語系、錯誤提醒、密碼隱藏按鈕 ) --- */
 const nameTxt = document.querySelector('.form_item input[name="name"]');
@@ -38,6 +41,12 @@ lang_toggle.addEventListener('click',() =>{
     options.forEach(option => option.classList.toggle('active'));
 });
 
+/* 登入後的下拉式選單 */
+dropdown_toggle.addEventListener('click',() =>{
+    const dropdown_menu = document.querySelector('.dropdown-menu');
+    dropdown_menu.classList.toggle("active");
+});
+
 // 顯示密碼、隱藏密碼按鈕事件
 showPwd_Eye.forEach(icon => {
     icon.addEventListener('click',() => {
@@ -57,6 +66,10 @@ selects.forEach(select => {
         func.updateOptions(selects);
     });
 });
+
+window.addEventListener('DOMContentLoaded',() => {
+    func.checkLoginStatus(); // 更新畫面
+})
 
 /* --- 登入獨有事件 ( 記住 Email、第三方登入 ) --- */
 if (window.location.pathname.includes('login.html')) {
@@ -123,6 +136,14 @@ if (window.location.pathname.includes('reset-password.html')){
         func.refreshCaptcha(captchaImg);
     })
 }
+
+// 登出按鈕事件
+logout.addEventListener('click', e =>{
+    e.preventDefault();
+
+    localStorage.removeItem("authToken");
+    func.checkLoginStatus(); // 更新畫面
+})
 
 // 按鈕事件
 submitBtn.addEventListener('click', e=> {

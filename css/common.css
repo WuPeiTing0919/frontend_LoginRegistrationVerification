@@ -188,6 +188,84 @@ a {
     background-color: #333333;
 }
 
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+
+.user-dropdown .user-toggle{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+
+    color: #5B5B5B;
+    transition: color 0.3s ease;
+
+    cursor: pointer;
+}
+
+#userPicture{
+    width: 42px;
+}
+
+.user-dropdown .dropdown-menu{
+    position: absolute;
+    top: 100%;
+    right: 0;
+    width: 180px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    z-index: 1000;
+    overflow: hidden;
+
+     /* 動畫相關 */
+    max-height: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.dropdown-menu.active{
+    max-height: 500px; /* 足夠容納整個選單 */
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.user-dropdown .dropdown-header{
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 20px;
+    background-color: #EDF6F3;
+    color: #939393;
+}
+
+.user-dropdown ul{
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 20px;
+    color: #5B5B5B;
+}
+
+.user-dropdown li{
+    padding: 4px 0px;
+}
+
+.user-dropdown a{
+    display: block;
+}
+
+.user-dropdown a:hover{
+    color: #5B5B5B;
+    text-decoration: underline;
+}
 
 /* ----------------------  footer  ------------------------- */
 .footer{

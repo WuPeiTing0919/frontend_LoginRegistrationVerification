@@ -140,3 +140,21 @@ export function checkSelections(selects,errorTxt){
 export function refreshCaptcha(captchaImg) {
     captchaImg.src = 'http://127.0.0.1:3000/api/v1/auth/userinfo/captcha?' + Date.now();
 }
+
+export function checkLoginStatus() {
+    const token = localStorage.getItem("authToken");
+    const loginBtn = document.querySelector(".login_btn");
+    const userDropdown = document.querySelector(".user-dropdown");
+    const userMenu = document.querySelector(".dropdown-menu");
+
+    if (token) {
+      // 顯示使用者資訊
+      loginBtn.style.display = "none";
+      userDropdown.style.display = "inline-block";
+      userMenu.classList.remove("active");
+    } else {
+      // 顯示註冊按鈕
+      loginBtn.style.display = "inline-block";
+      userDropdown.style.display = "none";
+    }
+}
