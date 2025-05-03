@@ -215,7 +215,9 @@ a {
 }
 
 #userPicture{
-    width: 45px;
+    width: 48px;
+    border: 2px solid #5B5B5B;
+    border-radius: 50%;
 }
 
 .user-dropdown .dropdown-menu{

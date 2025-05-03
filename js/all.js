@@ -131,6 +131,7 @@ if (window.location.pathname.includes('login.html')) {
     });
 }
 
+// 更新密碼的驗證碼事件
 if (window.location.pathname.includes('reset-password.html')){
     captchaImg.addEventListener('click', () => {
         func.refreshCaptcha(captchaImg);
@@ -185,7 +186,6 @@ submitBtn.addEventListener('click', e=> {
         if(func.validatePassword(newpwdTxt,error_msg)) return;
         if(func.validatePassword(newpwdAgainTxt,error_msg)) return;
 
-        console.log(input.value.trim())
         api.post_user_resetPW(
             token,
             newpwdTxt.value.trim(),

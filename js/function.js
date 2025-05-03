@@ -143,12 +143,24 @@ export function refreshCaptcha(captchaImg) {
 
 export function checkLoginStatus() {
     const token = localStorage.getItem("authToken");
+    const picture = localStorage.getItem("userPicture");
+    const name = localStorage.getItem("userName");
+    const level = localStorage.getItem("levelName");
+
     const loginBtn = document.querySelector(".login_btn");
     const userDropdown = document.querySelector(".user-dropdown");
     const userMenu = document.querySelector(".dropdown-menu");
+    const userPicture = document.getElementById('userPicture');
+    const userName = document.getElementById('userName');
+    const levelName = document.getElementById('levelName');
 
+    
     if (token) {
       // 顯示使用者資訊
+      userPicture.src = picture;
+      userName.textContent = `嗨！${name}`;
+      levelName .textContent = level;
+
       loginBtn.style.display = "none";
       userDropdown.style.display = "inline-block";
       userMenu.classList.remove("active");

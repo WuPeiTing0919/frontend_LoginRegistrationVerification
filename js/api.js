@@ -18,6 +18,10 @@ export function post_user_SignUp(signUpName_txt,signUpEmail_txt,signUpPwd_txt,si
           text: res.data.message,
           scrollbarPadding: false
       });
+
+      const timeout = setTimeout(() => {
+        window.location.href = "/login.html";
+      },3000);
     })
     .catch(error => {
       Swal.fire({
@@ -37,7 +41,9 @@ export function post_user_LoginEmail(signUpEmail_txt,signUpPwd_txt){
   })
   .then(res => {
     localStorage.setItem("authToken", res.data.data.token);
-    document.getElementById('userName').textContent = `嗨！${res.data.data.user.name}`;
+    localStorage.setItem("userName", res.data.data.user.name);
+    localStorage.setItem("userPicture", res.data.data.user.avatar_url ? res.data.data.user.avatar_url : "img/default_people.png");
+    localStorage.setItem("levelName", res.data.data.level.name);
 
     func.checkLoginStatus();
     Swal.fire({
@@ -46,6 +52,10 @@ export function post_user_LoginEmail(signUpEmail_txt,signUpPwd_txt){
         text: res.data.message,
         scrollbarPadding: false
     });
+
+    const timeout = setTimeout(() => {
+      window.location.href = "https://sumaoxiong.github.io/tripeasy-memberarea/info/userinfo.html";
+    },3000);
   })
   .catch(error => {
     Swal.fire({
@@ -64,7 +74,9 @@ export function post_user_LoginGoogle(code){
   })
   .then(res => {
     localStorage.setItem("authToken", res.data.data.token);
-    document.getElementById('userName').textContent = `嗨！${res.data.data.user.name}`;
+    localStorage.setItem("userName", res.data.data.user.name);
+    localStorage.setItem("userPicture", res.data.data.user.avatar_url ? res.data.data.user.avatar_url : "img/default_people.png");
+    localStorage.setItem("levelName", res.data.data.level.name);
 
     func.checkLoginStatus();
     Swal.fire({
@@ -74,7 +86,9 @@ export function post_user_LoginGoogle(code){
         scrollbarPadding: false
     });
 
-    console.log(res.data)
+    const timeout = setTimeout(() => {
+      window.location.href = "https://sumaoxiong.github.io/tripeasy-memberarea/info/userinfo.html";
+    },3000);
   })
   .catch(error => {
     Swal.fire({
@@ -126,6 +140,10 @@ export function post_user_resetPW(token,signUpNewPwd_txt,signUpNewaginPwd_txt,ca
         text: res.data.message,
         scrollbarPadding: false
     });
+
+    const timeout = setTimeout(() => {
+      window.location.href = "/login.html";
+    },3000);
   })
   .catch(error => {
     Swal.fire({
