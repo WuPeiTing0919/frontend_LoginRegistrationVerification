@@ -1,3 +1,4 @@
+
 // 偏好設定 3 項不可重複事件函數
 export function updateOptions(selects) {
     // 抓目前選擇的下拉式選單內容，並存成陣列
@@ -135,10 +136,6 @@ export function checkSelections(selects,errorTxt){
         errorTxt.textContent = "「偏好設定」欄位請選擇完整，謝謝。";
         return true;
     } 
-}
-
-export function refreshCaptcha(captchaImg) {
-    captchaImg.src = 'http://127.0.0.1:3000/api/v1/auth/userinfo/captcha?' + Date.now();
 }
 
 export function checkLoginStatus() {

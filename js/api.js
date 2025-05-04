@@ -1,7 +1,7 @@
 import * as func from './function.js';
 
 const version = 'v1';
-const apiUrl = `http://127.0.0.1:3000/api/${version}/auth/userinfo`;
+const apiUrl = `https://tripeasy-84np.onrender.com/api/${version}/auth/userinfo`;
 
 // [POST] 編號 01 : 使用者註冊、個人偏好設定
 export function post_user_SignUp(signUpName_txt,signUpEmail_txt,signUpPwd_txt,signUpPrefer_Array){
@@ -144,6 +144,25 @@ export function post_user_resetPW(token,signUpNewPwd_txt,signUpNewaginPwd_txt,ca
     const timeout = setTimeout(() => {
       window.location.href = "/login.html";
     },3000);
+  })
+  .catch(error => {
+    Swal.fire({
+        icon: "error",
+        title: error.response.data.status,
+        text: error.response.data.message,
+        scrollbarPadding: false
+    });
+  });
+}
+
+// [GET] 編號 07 : 圖片、文字驗證碼判斷機器人
+export function get_user_captcha(){
+  axios.get(`${apiUrl}/captcha`,{
+    withCredentials: true, // ← 這就是 credentials: 'include' 的對應
+    responseType: 'text' 
+  })
+  .then(res => {
+    document.getElementById('captcha').innerHTML = res.data;
   })
   .catch(error => {
     Swal.fire({

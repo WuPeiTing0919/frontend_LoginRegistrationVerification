@@ -133,8 +133,12 @@ if (window.location.pathname.includes('login.html')) {
 
 // 更新密碼的驗證碼事件
 if (window.location.pathname.includes('reset-password.html')){
+    window.addEventListener('DOMContentLoaded', async () => {
+        api.get_user_captcha();
+    })
+    
     captchaImg.addEventListener('click', () => {
-        func.refreshCaptcha(captchaImg);
+        api.get_user_captcha();
     })
 }
 

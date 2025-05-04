@@ -306,7 +306,7 @@ input[type=checkbox]:checked+span::after{
 }
 
 .captcha_item #captchaInput{
-    width: 170px;
+    width: 190px;
     border: 2px solid #D4D4D4;
     padding: 15px 0px 15px 15px;
     border-radius: 5px;
